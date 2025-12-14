@@ -11,9 +11,9 @@ export default function CartPage() {
     const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
     // CONFIGURATION DES NUMÉROS
-    const WHATSAPP_NUMBER = "2250700000000"; // Votre numéro WhatsApp
-    const MOMO_ORANGE_WAVE = "07 00 00 00 00"; // Votre numéro Orange/Wave
-    const MOMO_MTN = "05 00 00 00 00"; // Votre numéro MTN
+    const WHATSAPP_NUMBER = "2250768582180"; // Votre numéro WhatsApp
+    const MOMO_ORANGE_WAVE = "07 48 41 52 86"; // Votre numéro Orange/Wave
+    const MOMO_MTN = "05 55 59 40 62"; // Votre numéro MTN
 
     const handleWhatsAppOrder = () => {
         if (cart.length === 0) return;
