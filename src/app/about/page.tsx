@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="bg-white min-h-screen">
       {/* Header Section */}
       <div className="bg-indigo-900 text-white py-20 px-6 text-center">
-        <h1 className="text-4xl md:text-6xl font-black mb-4 italic">À PROPOS DE CEB SHOP</h1>
+        <h1 className="text-4xl md:text-6xl font-black mb-4 italic">À PROPOS DE CEBA SHOP</h1>
         <p className="text-xl opacity-90 max-w-2xl mx-auto">
           L'élégance intemporelle et l'innovation technologique réunies en un seul endroit.
         </p>
@@ -19,7 +19,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Notre Histoire</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               Fondée avec la volonté de rendre l'horlogerie de prestige accessible, 
-              <strong> CEB SHOP</strong> s'est imposée comme une destination de choix pour les amateurs de belles pièces.
+              <strong> CEBA SHOP</strong> s'est imposée comme une destination de choix pour les amateurs de belles pièces.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Que vous recherchiez l'élégance classique d'une montre à quartz ou la performance 
