@@ -1,26 +1,29 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image'; // Import pour des images optimisées
+import Image from 'next/image';
 import { useCart } from '../../lib/store';
 import { mockProducts } from '../../data/products';
 
-// Fonction pour formater le prix en CFA (souvent utilisé avec Paystack au Cameroun/CI) 
-// ou gardez EUR selon votre besoin
+// Fonction pour formater le prix
 const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fr-FR', {
         style: 'currency',
-        currency: 'XAF', // Modifié en XAF pour l'exemple, remettez 'EUR' si besoin
+        currency: 'XAF', // Adapté pour l'Afrique de l'Ouest/Centrale (Paystack)
     }).format(price);
 };
 
 export default function ShopPage() {
     const addToCart = useCart((state) => state.addToCart);
 
-    const handleAddToCart = (product: typeof mockProducts[0]) => {
-        addToCart(product);
-        // Une petite notification discrète serait mieux qu'une alert, 
-        // mais gardons l'alert pour l'instant pour rester simple
+    // Correction radicale pour TypeScript (utilisation de 'any')
+    const handleAddToCart = (product: any) => {
+        addToCart({
+            id: String(product.id),
+            name: product.name,
+            price: Number(product.price),
+            image: product.image,
+        });
         alert(`"${product.name}" a été ajouté au panier !`);
     };
 
@@ -30,26 +33,22 @@ export default function ShopPage() {
                 🛍️ Notre Boutique
             </h1>
 
-            {/* Grille d'affichage des produits */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {mockProducts.map((product) => (
                     <div 
                         key={product.id} 
                         className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105"
                     >
-                        {/* Conteneur Image avec Next/Image */}
                         <div className="relative w-full h-48 bg-gray-100">
                             <Image 
                                 src={product.image} 
                                 alt={product.name} 
                                 fill
                                 className="object-cover"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                                priority={product.id <= 4} // Charge plus vite les 4 premiers produits
+                                sizes="(max-width: 768px) 100vw, 25vw"
                             />
                         </div>
                         
-                        {/* Détails du produit */}
                         <div className="p-5 flex flex-col flex-grow">
                             <h2 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h2>
                             <p className="text-gray-600 text-sm mb-4 flex-grow line-clamp-2">
