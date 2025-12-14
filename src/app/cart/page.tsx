@@ -44,13 +44,13 @@ export default function CartPage() {
 
   // 3. Fonction pour la commande WhatsApp
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "2250"; // Mettez votre vrai numéro ici
+    const phoneNumber = "2250768582180"; // Mettez votre vrai numéro ici
 
     const messageItems = items
       .map((item) => `%0A- ${item.quantity}x ${item.name} (${formatPrice(item.price * item.quantity)})`)
       .join("");
 
-    const message = `Bonjour CEB-SHOP ! 👋%0A%0AJe souhaite commander :${messageItems}%0A%0A*Total à payer : ${formatPrice(total)}*%0A%0APouvez-vous confirmer ma commande ?`;
+    const message = `Bonjour CEBA-SHOP ! 👋%0A%0AJe souhaite commander :${messageItems}%0A%0A*Total à payer : ${formatPrice(total)}*%0A%0APouvez-vous confirmer ma commande ?`;
 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
