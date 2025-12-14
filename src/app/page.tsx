@@ -1,33 +1,20 @@
-// src/app/page.tsx  <-- C'est ce fichier là !
+import Link from 'next/link';
+import Hero from '@/components/Hero';
+import Features from '@/components/Features';
 
-import Hero from "../components/Hero";
-import Features from "../components/Features";
-import ProductCard from "../components/ProductCard";
-import { prisma } from "../lib/prisma"; 
-
-export default async function Home() {
-  // On récupère les données de la base de données
-  const products = await prisma.product.findMany();
-
+export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main>
       <Hero />
       <Features />
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-8">Nos Vedettes</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product: any) => (
-  <ProductCard 
-    key={product.id} 
-    id={product.id}
-    name={product.name}
-    price={product.price}
-    image={product.image}
-    category={product.category}
-  />
-))}
-        </div>
-      </section>
+      <div className="flex justify-center pb-20">
+        <Link 
+          href="/shop" 
+          className="bg-indigo-600 text-white px-8 py-4 rounded-full font-bold text-xl hover:bg-indigo-700 transition-colors shadow-lg"
+        >
+          Voir la collection de montres ⌚
+        </Link>
+      </div>
     </main>
   );
 }
