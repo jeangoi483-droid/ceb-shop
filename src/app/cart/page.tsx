@@ -1,25 +1,32 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '../../lib/store';
 
 export default function CartPage() {
+    // On ajoute un état pour vérifier si le composant est monté (chargé côté client)
+    const [isMounted, setIsMounted] = useState(false);
     const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
 
-    const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
-    // CONFIGURATION DES NUMÉROS
-    const WHATSAPP_NUMBER = "2250768582180"; // Votre numéro WhatsApp
-    const MOMO_ORANGE_WAVE = "07 48 41 52 86"; // Votre numéro Orange/Wave
-    const MOMO_MTN = "05 55 59 40 62"; // Votre numéro MTN
+    // Sécurité pour éviter l'erreur "reduce" pendant le build Vercel
+    const currentCart = cart || [];
+    const total = currentCart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+    const WHATSAPP_NUMBER = "2250768582180"; 
+    const MOMO_ORANGE_WAVE = "07 48 41 52 86"; 
+    const MOMO_MTN = "05 55 59 40 62"; 
 
     const handleWhatsAppOrder = () => {
-        if (cart.length === 0) return;
+        if (currentCart.length === 0) return;
 
-        let message = "Bonjour CEB SHOP, je souhaite commander :%0A%0A";
-        cart.forEach(item => {
+        let message = "Bonjour CEBA SHOP, je souhaite commander :%0A%0A";
+        currentCart.forEach(item => {
             message += `• ${item.name} (x${item.quantity}) - ${item.price * item.quantity} XAF%0A`;
         });
         
@@ -34,7 +41,12 @@ export default function CartPage() {
         window.open(whatsappUrl, '_blank');
     };
 
-    if (cart.length === 0) {
+    // Si on est en train de construire la page (côté serveur), on affiche un chargement simple
+    if (!isMounted) {
+        return <div className="p-20 text-center">Chargement du panier...</div>;
+    }
+
+    if (currentCart.length === 0) {
         return (
             <div className="max-w-7xl mx-auto p-20 text-center">
                 <h2 className="text-3xl font-bold mb-6">Votre panier est vide 🛒</h2>
@@ -48,7 +60,7 @@ export default function CartPage() {
             <h1 className="text-3xl font-bold mb-8">Mon Panier</h1>
             
             <div className="space-y-6 mb-10">
-                {cart.map((item) => (
+                {currentCart.map((item) => (
                     <div key={item.id} className="flex items-center justify-between border-b pb-4">
                         <div className="flex items-center gap-4">
                             <Image src={item.image} alt={item.name} width={80} height={80} className="rounded-lg object-cover" />
@@ -59,17 +71,15 @@ export default function CartPage() {
                         </div>
                         <div className="flex items-center gap-4">
                             <input type="number" min="1" value={item.quantity} onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))} className="w-16 border rounded p-1 text-center" />
-                            <button onClick={() => removeFromCart(item.id)} className="text-red-500">Supprimer</button>
+                            <button onClick={() => removeFromCart(item.id)} className="text-red-500 text-sm">Supprimer</button>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* BLOC INFO PAIEMENT MOBILE */}
             <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-xl mb-8">
                 <h3 className="font-bold text-orange-800 flex items-center gap-2 mb-2">📲 Paiement Mobile Money Direct</h3>
-                <p className="text-sm text-orange-700 mb-4">Pour un traitement rapide via WhatsApp, vous pouvez payer sur :</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-bold">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-bold mt-2">
                     <div className="bg-white p-3 rounded shadow-sm">🟠 Orange/Wave: {MOMO_ORANGE_WAVE}</div>
                     <div className="bg-white p-3 rounded shadow-sm">🟡 MTN: {MOMO_MTN}</div>
                 </div>
@@ -82,14 +92,8 @@ export default function CartPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
-                    {/* BOUTON WHATSAPP */}
                     <button onClick={handleWhatsAppOrder} className="w-full bg-green-500 hover:bg-green-600 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all">
                         <span>💬</span> Commander & Payer via WhatsApp
-                    </button>
-
-                    {/* BOUTON PAYSTACK (Automatique) */}
-                    <button className="w-full bg-indigo-600 hover:bg-indigo-700 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all">
-                        <span>💳</span> Payer par Carte ou Mobile (Paystack)
                     </button>
                 </div>
 
