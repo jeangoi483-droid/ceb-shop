@@ -5,18 +5,16 @@ import Image from 'next/image';
 import { useCart } from '../../lib/store';
 import { mockProducts } from '../../data/products';
 
-// Fonction pour formater le prix
 const formatPrice = (price: number) => {
     return new Intl.NumberFormat('fr-FR', {
         style: 'currency',
-        currency: 'XAF', // Adapté pour l'Afrique de l'Ouest/Centrale (Paystack)
+        currency: 'XAF',
     }).format(price);
 };
 
 export default function ShopPage() {
     const addToCart = useCart((state) => state.addToCart);
 
-    // Correction radicale pour TypeScript (utilisation de 'any')
     const handleAddToCart = (product: any) => {
         addToCart({
             id: String(product.id),
@@ -46,6 +44,7 @@ export default function ShopPage() {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 25vw"
+                                priority // On simplifie ici pour éviter l'erreur de calcul
                             />
                         </div>
                         
