@@ -9,15 +9,18 @@ import { useCart } from '../../lib/store';
 export default function ShopPage() {
     const addToCart = useCart((state) => state.addToCart);
 
-    const handleAddToCart = (product: any) => {
-        addToCart({
-            id: String(product.id),
-            name: product.name,
-            price: product.price,
-            image: product.image,
-        });
-        alert(`"${product.name}" ajouté au panier !`);
+   const handleAddToCart = (product: any) => {
+    // On s'assure que toutes les données sont bien présentes et au bon format
+    const itemToAdd = {
+        id: String(product.id),
+        name: String(product.name),
+        price: Number(product.price),
+        image: String(product.image),
     };
+    
+    addToCart(itemToAdd);
+    alert(`✅ "${product.name}" a été ajouté au panier !`);
+};
 
     return (
         <div className="max-w-7xl mx-auto p-8">
