@@ -1,16 +1,34 @@
-// src/app/layout.tsx
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import "../styles/globals.css";
-import Navbar from "../components/Navbar"; // <-- 1. Importez le composant
+const inter = Inter({ subsets: ['latin'] });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'CEB SHOP | Horlogerie de Luxe en Côte d\'Ivoire',
+  description: 'Achetez vos montres de luxe avec paiement Mobile Money',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="fr">
-      <body>
-        <Navbar /> {/* <-- 2. Placez la Navbar ici */}
+      <body className={inter.className}>
+        {/* Barre de navigation en haut */}
+        <Navbar />
         
-        <main>{children}</main> {/* Optionnel : enveloppez 'children' dans une balise 'main' */}
+        {/* Contenu principal de chaque page */}
+        <main className="min-h-screen">
+          {children}
+        </main>
         
+        {/* Pied de page en bas */}
+        <Footer />
       </body>
     </html>
   );
