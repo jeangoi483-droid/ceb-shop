@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+// Chemins corrigés pour correspondre à votre structure réelle
+import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,15 +20,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        {/* Barre de navigation en haut */}
         <Navbar />
-        
-        {/* Contenu principal de chaque page */}
         <main className="min-h-screen">
           {children}
         </main>
-        
-        {/* Pied de page en bas */}
         <Footer />
       </body>
     </html>
