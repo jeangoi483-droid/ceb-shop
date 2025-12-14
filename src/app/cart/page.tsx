@@ -24,6 +24,32 @@ export default function CartPage() {
     const MOMO_ORANGE_WAVE = "07 48 41 52 86"; 
     const MOMO_MTN = "05 55 59 40 62"; 
 
+    // ... juste après les numéros MOMO_MTN ...
+
+    const initializePaystack = () => {
+        // @ts-ignore
+        const handler = (window as any).PaystackPop.setup({
+            key: 'pk_live_890e26ed3ba8620e398983553f60ba5c889b7c5c', 
+            email: 'client@email.com',
+            amount: total * 100,
+            currency: 'XOF',
+            ref: 'CEB-' + Math.floor((Math.random() * 1000000000) + 1),
+            callback: function(response: any) {
+                alert('Paiement réussi !');
+                clearCart();
+                window.location.href = '/success';
+            },
+            onClose: function() {
+                alert('Fenêtre de paiement fermée.');
+            }
+        });
+        handler.openIframe();
+    };
+
+    // Votre ancienne fonction WhatsApp reste ici
+    const handleWhatsAppOrder = () => { 
+        // ...
+    
     const handleWhatsAppOrder = () => {
         if (currentCart.length === 0) return;
 
@@ -75,7 +101,7 @@ export default function CartPage() {
                             </div>
                             <div>
                                 <h3 className="font-bold text-gray-800">{item.name}</h3>
-                                <p className="text-indigo-600 font-bold">{item.price.toLocaleString()} XAF</p>
+                                <p className="text-indigo-600 font-bold">{item.price.toLocaleString()} XOF</p>
                             </div>
                         </div>
                         
@@ -111,13 +137,22 @@ export default function CartPage() {
             <div className="p-8 bg-gray-900 text-white rounded-3xl shadow-2xl sticky bottom-4 md:relative">
                 <div className="flex justify-between text-2xl font-bold mb-8">
                     <span className="text-gray-400">Total :</span>
-                    <span className="text-indigo-400">{total.toLocaleString()} XAF</span>
+                    <span className="text-indigo-400">{total.toLocaleString()} XOF</span>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
+                    {/* BOUTON PAYSTACK */}
+                    <button 
+                        onClick={initializePaystack}
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 transition-all shadow-lg"
+                    >
+                        <span>💳</span> Payer par Carte / Mobile Money
+                    </button>
+
+                    {/* BOUTON WHATSAPP */}
                     <button 
                         onClick={handleWhatsAppOrder} 
-                        className="w-full bg-green-500 hover:bg-green-600 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 transition-all transform active:scale-95 shadow-lg shadow-green-900/20"
+                        className="w-full bg-green-500 hover:bg-green-600 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 transition-all shadow-lg"
                     >
                         <span>💬</span> Commander via WhatsApp
                     </button>
@@ -128,5 +163,15 @@ export default function CartPage() {
                 </button>
             </div>
         </div>
+
+        return (
+        <div className="max-w-4xl mx-auto p-6 md:p-8 pt-24">
+            {/* ... tout le code HTML ... */}
+            
+            {/* AJOUTEZ LA LIGNE ICI JUSTE AVANT LA FIN DU RETURN */}
+            <script src="https://js.paystack.co/v1/inline.js" async></script>
+        </div>
+    );
+}
     );
 }
