@@ -18,14 +18,17 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     }
 
     const handleAddToCart = () => {
-        addToCart({
-            id: String(product.id),
-            name: product.name,
-            price: product.price,
-            image: product.image,
-        });
-        alert(`"${product.name}" ajouté au panier !`);
-    };
+    if (!product) return;
+
+    addToCart({
+        id: String(product.id),
+        name: String(product.name),
+        price: Number(product.price),
+        image: String(product.image),
+    });
+    
+    alert(`✅ "${product.name}" a été ajouté au panier !`);
+};
 
     return (
         <div className="max-w-6xl mx-auto p-6 md:p-12 pt-24">
