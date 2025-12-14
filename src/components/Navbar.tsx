@@ -1,84 +1,43 @@
-// src/components/Navbar.tsx
+'use client';
 
-'use client'; 
-
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { useCart } from '../lib/store';
-
-const navLinks = [
-  { name: 'Boutique', href: '/shop' },
-  { name: 'Nouveautés', href: '/new' },
-  { name: 'À Propos', href: '/about' },
-];
+import { useCart } from '../lib/store'; // Vérifiez que le chemin vers store.ts est correct
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const items = useCart((state) => state.items);
-  const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+  const [mounted, setMounted] = useState(false);
+  // On récupère le panier
+  const cart = useCart((state) => state.cart);
+
+  // Sécurité pour le build : on attend que le client soit prêt
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Calcul du nombre d'articles (0 si pas encore chargé)
+  const cartCount = mounted ? cart.reduce((acc, item) => acc + item.quantity, 0) : 0;
 
   return (
-    // La navigation est sticky, en haut et avec une ombre
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      
-      {/* Ce div limite la largeur du contenu (max-w-7xl) et le centre (mx-auto) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-black italic text-indigo-900">
+          CEB SHOP
+        </Link>
+
+        <div className="flex items-center gap-8">
+          <Link href="/shop" className="font-medium hover:text-indigo-600 transition-colors">Boutique</Link>
+          <Link href="/about" className="font-medium hover:text-indigo-600 transition-colors">À Propos</Link>
           
-          {/* LOGO */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-gray-900 italic">
-              CEBA-SHOP
-            </Link>
-          </div>
-
-          {/* Liens Desktop */}
-          <div className="hidden md:flex md:space-x-8">
-            {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-gray-700 hover:text-indigo-600 font-medium">
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* SECTION ICÔNES */}
-          <div className="flex items-center space-x-5">
-            
-            {/* BOUTON PANIER AVEC COMPTEUR */}
-            <Link href="/cart" className="relative group p-2 text-gray-700 hover:text-indigo-600 transition-colors">
-              <span className="text-2xl">🛒</span>
-              
-              {/* AFFICHAGE CONDITIONNEL DU COMPTEUR ROUGE */}
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white animate-bounce-short">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
-
-            <button className="text-gray-700 hover:text-indigo-600 text-2xl">👤</button>
-            
-            {/* Menu Mobile */}
-            <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 text-2xl">
-                {isOpen ? '✕' : '☰'}
-              </button>
-            </div>
-          </div>
+          <Link href="/cart" className="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-all">
+            <span className="text-xl">🛒</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full animate-in zoom-in">
+                {cartCount}
+              </span>
+            )}
+          </Link>
         </div>
       </div>
-
-      {/* Menu Mobile Déroulant */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t py-2 shadow-inner">
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="block px-6 py-3 text-gray-700 hover:bg-gray-50">
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      )}
     </nav>
   );
 }
