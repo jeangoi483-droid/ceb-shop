@@ -34,7 +34,7 @@ export const mockProducts = [
   name: "Skmei Montre Homme De Luxe à Quartz, Numérique， Modèle",
   price: 10000, // Prix sans virgule ni espace
   description: "Description élégante de la montre ici...",
-  image: "/images/montre-skmei.jpeg", // Le chemin de l'image
+  image: "/images/montre-skmei.jpg", // Le chemin de l'image
   category: "Luxe"
 },
 ];
