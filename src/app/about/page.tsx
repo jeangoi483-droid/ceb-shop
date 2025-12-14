@@ -1,50 +1,67 @@
-// app/about/page.tsx
-
 import React from 'react';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] p-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">
-        ℹ️ Page À Propos
-      </h1>
-      <p className="text-gray-600">
-        Bienvenue chez CEBA-SHOP, l’univers où élégance, précision et style se rencontrent.
-Nous sommes une maison dédiée à la sélection de montres d’exception pour hommes et femmes, alliant design raffiné, qualité irréprochable et performance au quotidien.
+    <div className="bg-white min-h-screen">
+      {/* Header Section */}
+      <div className="bg-indigo-900 text-white py-20 px-6 text-center">
+        <h1 className="text-4xl md:text-6xl font-black mb-4 italic">À PROPOS DE CEB SHOP</h1>
+        <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          L'élégance intemporelle et l'innovation technologique réunies en un seul endroit.
+        </p>
+      </div>
 
-Notre mission
+      {/* Main Content */}
+      <div className="max-w-5xl mx-auto py-16 px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Notre Histoire</h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              Fondée avec la volonté de rendre l'horlogerie de prestige accessible, 
+              <strong> CEB SHOP</strong> s'est imposée comme une destination de choix pour les amateurs de belles pièces.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Que vous recherchiez l'élégance classique d'une montre à quartz ou la performance 
+              d'une montre connectée de dernière génération, nous sélectionnons des produits 
+              qui allient durabilité et style.
+            </p>
+          </div>
+          <div className="bg-gray-100 h-80 rounded-3xl flex items-center justify-center text-5xl shadow-inner">
+            ⌚✨
+          </div>
+        </div>
 
-Offrir bien plus qu’un simple accessoire :
-proposer des montres qui racontent une histoire, révèlent une personnalité et subliment chaque instant.
+        {/* Values */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-8 bg-indigo-50 rounded-2xl">
+            <div className="text-4xl mb-4">💎</div>
+            <h3 className="font-bold text-xl mb-2">Qualité Premium</h3>
+            <p className="text-sm text-gray-600">Des matériaux sélectionnés pour durer dans le temps.</p>
+          </div>
+          <div className="text-center p-8 bg-indigo-50 rounded-2xl">
+            <div className="text-4xl mb-4">🚚</div>
+            <h3 className="font-bold text-xl mb-2">Livraison Rapide</h3>
+            <p className="text-sm text-gray-600">Expédition sécurisée partout en Côte d'Ivoire et au-delà.</p>
+          </div>
+          <div className="text-center p-8 bg-indigo-50 rounded-2xl">
+            <div className="text-4xl mb-4">🤝</div>
+            <h3 className="font-bold text-xl mb-2">Service Client</h3>
+            <p className="text-sm text-gray-600">Nous vous accompagnons par WhatsApp pour chaque commande.</p>
+          </div>
+        </div>
 
-Une sélection haut de gamme
-
-Chaque modèle présenté sur CEBA-SHOP est choisi avec exigence pour :
-
-Son design unique
-
-Sa qualité de fabrication
-
-Sa durabilité
-
-Son allure intemporell
-
-Qu’il s’agisse d’une montre élégante pour le quotidien, d’un modèle chic pour les grandes occasions ou d’un style moderne pour affirmer votre caractère, nous vous offrons une variété pensée pour satisfaire les goûts les plus raffinés.
-
-Notre engagement
-
-Authenticité garantie
-
-Service client premium, à l’écoute et disponible
-
-Livraison rapide et sécurisée partout en Côte d’Ivoire
-
-Satisfaction absolue : votre expérience est notre priorité
-
-Notre vision
-
-Faire de CEBA-SHOP la référence incontournable en Côte d’Ivoire pour les montres premium homme et femme, en alliant excellence, confiance et distinction.
-      </p>
+        {/* CTA */}
+        <div className="mt-20 text-center border-t pt-16">
+          <h3 className="text-2xl font-bold mb-6">Prêt à choisir votre prochaine montre ?</h3>
+          <Link 
+            href="/shop" 
+            className="inline-block bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 transition-all shadow-lg"
+          >
+            Voir la Collection
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
