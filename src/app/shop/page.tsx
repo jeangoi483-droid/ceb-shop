@@ -44,7 +44,7 @@ export default function ShopPage() {
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, 25vw"
-                                priority // On simplifie ici pour éviter l'erreur de calcul
+                                priority
                             />
                         </div>
                         
