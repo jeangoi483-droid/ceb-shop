@@ -1,8 +1,8 @@
-import '../app/globals.css'; // Changement ici : on précise bien le chemin interne
+import '../styles/globals.css'; // Chemin exact vers votre dossier styles
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-// On utilise des chemins relatifs sécurisés
+// Chemins relatifs pour vos composants
 import Navbar from '../components/Navbar'; 
 import Footer from '../components/Footer';
 
