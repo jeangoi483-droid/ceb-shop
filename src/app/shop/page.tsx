@@ -2,15 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useCart } from '../../lib/store';
+import Link from 'next/link';
 import { mockProducts } from '../../data/products';
-
-const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'XAF',
-    }).format(price);
-};
+import { useCart } from '../../lib/store';
 
 export default function ShopPage() {
     const addToCart = useCart((state) => state.addToCart);
@@ -19,51 +13,53 @@ export default function ShopPage() {
         addToCart({
             id: String(product.id),
             name: product.name,
-            price: Number(product.price),
+            price: product.price,
             image: product.image,
         });
-        alert(`"${product.name}" a été ajouté au panier !`);
+        alert(`"${product.name}" ajouté au panier !`);
     };
 
     return (
         <div className="max-w-7xl mx-auto p-8">
-            <h1 className="text-4xl font-extrabold text-indigo-700 mb-10 text-center">
-                🛍️ Notre Boutique
-            </h1>
-
+            <h1 className="text-4xl font-bold mb-10 text-center">Notre Collection de Montres</h1>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {mockProducts.map((product) => (
-                    <div 
-                        key={product.id} 
-                        className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105"
-                    >
-                        <div className="relative w-full h-48 bg-gray-100">
-                            <Image 
-                                src={product.image} 
-                                alt={product.name} 
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 25vw"
-                                priority
-                            />
-                        </div>
-                        
-                        <div className="p-5 flex flex-col flex-grow">
-                            <h2 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h2>
-                            <p className="text-gray-600 text-sm mb-4 flex-grow line-clamp-2">
+                    <div key={product.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-100">
+                        {/* LIEN SUR L'IMAGE */}
+                        <Link href={`/product/${product.id}`}>
+                            <div className="relative w-full h-64 bg-gray-100 cursor-pointer">
+                                <Image 
+                                    src={product.image} 
+                                    alt={product.name} 
+                                    fill 
+                                    className="object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        </Link>
+
+                        <div className="p-6">
+                            {/* LIEN SUR LE TITRE */}
+                            <Link href={`/product/${product.id}`}>
+                                <h2 className="text-xl font-bold text-gray-900 mb-2 hover:text-indigo-600 cursor-pointer">
+                                    {product.name}
+                                </h2>
+                            </Link>
+                            
+                            <p className="text-gray-500 text-sm mb-4 line-clamp-2">
                                 {product.description}
                             </p>
                             
                             <div className="flex items-center justify-between mt-auto">
-                                <span className="text-2xl font-extrabold text-indigo-600">
-                                    {formatPrice(product.price)}
+                                <span className="text-lg font-extrabold text-indigo-600">
+                                    {product.price.toLocaleString()} XAF
                                 </span>
-                                
-                                <button
+                                <button 
                                     onClick={() => handleAddToCart(product)}
-                                    className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-full text-sm transition-colors duration-200"
+                                    className="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors"
+                                    title="Ajouter au panier"
                                 >
-                                    + Panier
+                                    🛒
                                 </button>
                             </div>
                         </div>
