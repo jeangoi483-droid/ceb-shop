@@ -29,4 +29,12 @@ export const mockProducts = [
     image: "/images/montre-quartz.jpg",
     description: "La fiabilité du mouvement Quartz dans un boîtier raffiné et un bracelet confortable."
   }
+  {
+  id: 5, // Augmentez le chiffre pour chaque nouvel article (5, 6, 7...)
+  name: "Skmei Montre Homme De Luxe à Quartz, Numérique， Modèle",
+  price: 10000, // Prix sans virgule ni espace
+  description: "Description élégante de la montre ici...",
+  image: "/images/montre-skmei.jpeg", // Le chemin de l'image
+  category: "Luxe"
+},
 ];
