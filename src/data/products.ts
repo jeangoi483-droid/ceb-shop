@@ -51,4 +51,12 @@ export const mockProducts = [
     image: "/images/Curren-Chronographe-Cuir.jpeg",
     description: "Montre Curren élégante avec bracelet en cuir premium, boîtier finition dorée et cadran chronographe raffiné. Parfaite pour les hommes qui recherchent distinction, confort et style intemporel."
   },
+  {
+  id: "8",
+  name: "Swatch Swiss Silicone – Minimalisme Moderne",
+  price: 20000,
+  description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
+  image: "/images/Swatch-Swiss-Silicone.jpeg",
+  category: "Luxe"
+},
 ];
