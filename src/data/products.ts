@@ -37,4 +37,50 @@ export const mockProducts = [
   image: "/images/montre-skmei.jpg",
   category: "Luxe"
 },
+  {
+    id: "6",
+    name: "Curren Chronographe Acier – Élégance Sport",
+    price: 25000,
+    image: "/images/Curren-Chronographe-Acier.jpeg",
+    description: "Montre Curren pour homme au design sport chic, boîtier robuste en acier inoxydable, chronographes fonctionnels et affichage date. Idéale pour un style moderne et affirmé, au quotidien comme en soirée."
+  },
+  {
+    id: "7",
+    name: "Curren Chronographe Acier – Élégance Sport",
+    price: 25000,
+    image: "/images/Curren-Chronographe-Acier.jpeg",
+    description: "Affirmez votre style avec cette montre homme CURREN, un parfait équilibre entre design moderne, robustesse et précision. Conçue pour les hommes élégants et actifs, elle s’adapte aussi bien aux tenues professionnelles qu’aux looks décontractés.
+
+🔹 Caractéristiques principales :
+
+Marque : CURREN
+
+Mouvement : Quartz haute précision
+
+Affichage : Analogique avec chronographes décoratifs
+
+Boîtier : Acier inoxydable, finition brillante
+
+Bracelet : Acier inoxydable solide et confortable
+
+Cadran : Noir avec détails bleus, chiffres et index luminescents
+
+Fonctions : Heure, date, design chronographe
+
+Fermoir : Boucle déployante sécurisée
+
+Style : Sport – Luxe – Classique
+
+Résistance : Adaptée à un usage quotidien (éclaboussures)
+
+
+🔹 Pourquoi choisir cette montre ?
+
+✔ Design haut de gamme à prix accessible
+✔ Parfaite pour le bureau, les sorties et les événements
+✔ Excellente idée cadeau 🎁
+✔ Marque reconnue pour sa fiabilité
+
+📦 Livrée avec boîte CURREN originale"
+  },
 ];
