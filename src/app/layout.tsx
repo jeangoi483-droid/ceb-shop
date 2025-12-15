@@ -1,11 +1,11 @@
-import '../styles/globals.css'; // Chemin exact vers votre dossier styles
+import '../styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-// Chemins relatifs pour vos composants
+// LES IMPORTS DOIVENT ÊTRE ICI
 import Navbar from '../components/Navbar'; 
 import Footer from '../components/Footer';
-import WhatsAppFloating from '../components/WhatsAppFloating';
+import WhatsAppFloating from '../components/WhatsAppFloating'; // <-- BIEN VÉRIFIER LE CHEMIN
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,10 +23,16 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
         <Navbar />
+        
+        {/* On garde notre marge pour mobile ici */}
         <main className="min-h-screen pt-16 md:pt-24">
-  {children}
-</main>
+          {children}
+        </main>
+        
         <Footer />
+        
+        {/* LE BOUTON FLOTTANT DOIT ÊTRE À L'INTÉRIEUR DU BODY */}
+        <WhatsAppFloating />
       </body>
     </html>
   );
