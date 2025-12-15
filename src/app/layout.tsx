@@ -26,6 +26,7 @@ export default function RootLayout({
   {children}
 </main>
         <Footer />
+        import WhatsAppFloating from '../components/WhatsAppFloating';
       </body>
     </html>
   );
