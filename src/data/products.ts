@@ -4,36 +4,36 @@ export const mockProducts = [
   {
     id: "1",
     name: "Montre S-Series Luxe",
-    price: 85000,
+    price: 25000,
     image: "/images/montre-s.jpg",
     description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
   },
   {
     id: "2",
     name: "Smartwatch Pro Connect",
-    price: 125000,
+    price: 12000,
     image: "/images/montre-connecte.jpg",
     description: "Suivez votre santé et restez connecté avec style. Écran HD et autonomie longue durée."
   },
   {
     id: "3",
     name: "Montre Curren Business",
-    price: 45000,
+    price: 25000,
     image: "/images/montre-curren-1.jpg",
     description: "Le chronographe classique pour l'homme moderne. Précision et robustesse au rendez-vous."
   },
   {
     id: "4",
     name: "Montre Quartz Classic",
-    price: 35000,
+    price: 10000,
     image: "/images/montre-quartz.jpg",
     description: "La fiabilité du mouvement Quartz dans un boîtier raffiné et un bracelet confortable."
   },
   {
   id: "5",
-  name: "Skmei Montre Homme De Luxe à Quartz, Numérique， Modèle",
+  name: "Skmei Montre Digitale Homme Multifonction - Bracelet Acier",
   price: 10000,
-  description: "Description élégante de la montre ici...",
+  description: "Montre digitale moderne avec écran clair,bracelet en acier inoxydable et afffffichage complet (heure,date, jour, chronomètre). design élégant et robuste, idéale pour un usage quotidien, travail ou sorties.",
   image: "/images/montre-skmei.jpg",
   category: "Luxe"
 },
