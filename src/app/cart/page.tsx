@@ -72,9 +72,18 @@ export default function CartPage() {
 
     if (currentCart.length === 0) {
         return (
-            <div className="max-w-7xl mx-auto p-32 text-center">
-                <h2 className="text-3xl font-bold mb-6 text-gray-800">Votre panier est vide 🛒</h2>
-                <Link href="/shop" className="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold">Retourner à la boutique</Link>
+            <div className="max-w-7xl mx-auto px-6 py-32 text-center flex flex-col items-center justify-center min-h-[60vh]">
+                <div className="text-7xl mb-6 animate-bounce">🛒</div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">Votre panier est vide</h2>
+                <p className="text-gray-500 mb-10 max-w-xs mx-auto">
+                    Il semble que vous n'ayez pas encore choisi de montre d'exception.
+                </p>
+                <Link 
+                    href="/shop" 
+                    className="inline-block whitespace-nowrap bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-xl active:scale-95"
+                >
+                    Retour à la boutique
+                </Link>
             </div>
         );
     }
