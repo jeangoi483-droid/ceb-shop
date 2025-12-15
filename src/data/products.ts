@@ -46,9 +46,9 @@ export const mockProducts = [
   },
   {
     id: "7",
-    name: "Curren Chronographe Acier – Élégance Sport",
+    name: "Curren Chronographe Cuir",
     price: 25000,
-    image: "/images/Curren-Chronographe-Acier.jpeg",
-    description: "Montre Curren pour homme au design sport chic, boîtier robuste en acier inoxydable, chronographes fonctionnels et affichage date. Idéale pour un style moderne et affirmé, au quotidien comme en soirée."
+    image: "/images/Curren-Chronographe-Cuir.jpeg",
+    description: "Montre Curren élégante avec bracelet en cuir premium, boîtier finition dorée et cadran chronographe raffiné. Parfaite pour les hommes qui recherchent distinction, confort et style intemporel."
   },
 ];
