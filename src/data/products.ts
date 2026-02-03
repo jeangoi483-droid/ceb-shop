@@ -64,7 +64,7 @@ export const mockProducts = [
   name: "Montre SK Black Edition",
   price: 12000,
   description: "Cette montre élégante et moderne de la marque SK se distingue par son design raffiné. Son boîtier noir minimaliste et son bracelet en cuir noir apportent une touche sophistiquée à votre look. Les index en cuivre et les aiguilles fines ajoutent une subtile touche de contraste, offrant ainsi une lisibilité parfaite tout en restant élégante. Parfaite pour toutes les occasions, cette montre allie style et simplicité.",
-  image: "/images/montr10.jpg",
+  image: "/images/montr10.JPG",
   category: "Luxe"
 },
   {
