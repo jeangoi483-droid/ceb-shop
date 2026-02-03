@@ -60,6 +60,14 @@ export const mockProducts = [
   category: "Luxe"
 },
   {
+  id: "8",
+  name: "Swatch Swiss Silicone – Minimalisme Moderne",
+  price: 20000,
+  description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
+  image: "/images/Swatch-Swiss-Silicone.jpeg",
+  category: "Luxe"
+},
+  {
   id: "9",
   name: "Montre 2025 Montre Femme Tendance",
   price: 10000,
