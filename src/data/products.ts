@@ -60,15 +60,15 @@ export const mockProducts = [
   category: "Luxe"
 },
   {
-  id: "8",
-  name: "Swatch Swiss Silicone – Minimalisme Moderne",
-  price: 20000,
-  description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
-  image: "/images/Swatch-Swiss-Silicone.jpeg",
+  id: "9",
+  name: "Montre SK Black Edition",
+  price: 12000,
+  description: "Cette montre élégante et moderne de la marque SK se distingue par son design raffiné. Son boîtier noir minimaliste et son bracelet en cuir noir apportent une touche sophistiquée à votre look. Les index en cuivre et les aiguilles fines ajoutent une subtile touche de contraste, offrant ainsi une lisibilité parfaite tout en restant élégante. Parfaite pour toutes les occasions, cette montre allie style et simplicité.",
+  image: "/images/montr10.jpg",
   category: "Luxe"
 },
   {
-  id: "9",
+  id: "10",
   name: "Montre d'exercice lumineuse en silicone pour femmes carrée - Blanc crème",
   price: 10000,
   description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
