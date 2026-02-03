@@ -72,7 +72,7 @@ export const mockProducts = [
   name: "Montre d'exercice lumineuse en silicone pour femmes carrée - Blanc crème",
   price: 10000,
   description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
-  image: "/images/montre10.jpeg",
+  image: "/images/montre10.jpg",
   category: "Luxe"
 },
 ];
