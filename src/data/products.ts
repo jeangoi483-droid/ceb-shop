@@ -75,4 +75,12 @@ export const mockProducts = [
   image: "/images/montre10.jpg",
   category: "Luxe"
 },
+  {
+  id: "11",
+  name: "Casio Montre Femme classique ",
+  price: 25000,
+  description: "LTP-V005L-1BUDF - Bracelet en cuir - Resistant à l'eau.",
+  image: "/images/casio.jpg",
+  category: "Luxe"
+},
 ];
