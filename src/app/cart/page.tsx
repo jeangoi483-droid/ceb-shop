@@ -21,7 +21,7 @@ export default function CartPage() {
     // 2. LOGIQUE DE LIVRAISON (Configurée au départ)
     // Gratuit si > 25 000 XOF, sinon 1 500 XOF
     const shippingThreshold = 25000;
-    const shippingFee = subtotal >= shippingThreshold ? 0 : 100;
+    const shippingFee = subtotal >= shippingThreshold ? 0 : 1000;
     
     // 3. TOTAL FINAL
     const total = subtotal + shippingFee;
