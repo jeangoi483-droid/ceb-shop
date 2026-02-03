@@ -99,4 +99,12 @@ export const mockProducts = [
   image: "/images/gk.jpg",
   category: "Luxe"
 },
+  {
+  id: "14",
+  name: "Amber Time",
+  price: 7000,
+  description: "Montre de luxe résistant à l'eau ",
+  image: "/images/gk.jpg",
+  category: "Luxe"
+},
 ];
