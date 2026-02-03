@@ -115,12 +115,11 @@ export const mockProducts = [
   image: "/images/binbond.JPG",
   category: "Luxe"
 },
-  
   {
   id: "16",
   name: "Curren Montre De Luxe Pour Hommes",
   price: 10000,
-  description: "Cadran de conception de haute qualité de luxe de marque supérieure, fonction d'affichage de la date; ",
+  description: "Cadran de conception de haute qualité de luxe de marque supérieure, fonction d'affichage de la date",
   image: "/images/curren16.jpg",
   category: "Luxe"
 },
