@@ -64,7 +64,7 @@ export const mockProducts = [
   name: "Montre 2025 Montre Femme Tendance",
   price: 10000,
   description: "Montre Swatch Swiss au design épuré et contemporain, bracelet en silicone souple et léger, affichage clair avec date. Un choix idéal pour un look décontracté, urbain et tendance.",
-  image: "/images/SK-MONTRE.jfif",
+  image: "/images/Tissot.jpeg",
   category: "Luxe"
 },
 ];
