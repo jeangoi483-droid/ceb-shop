@@ -4,7 +4,7 @@ export const mockProducts = [
   {
     id: "1",
     name: "Montre S-Series Luxe",
-    price: 25000,
+    price: 19000,
     image: "/images/montre-s.jpg",
     description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
   },
@@ -25,7 +25,7 @@ export const mockProducts = [
   {
     id: "4",
     name: "Montre Quartz Classic",
-    price: 10000,
+    price: 12000,
     image: "/images/montre-quartz.jpg",
     description: "La fiabilité du mouvement Quartz dans un boîtier raffiné et un bracelet confortable."
   },
@@ -86,7 +86,7 @@ export const mockProducts = [
   {
   id: "12",
   name: "Montre De Sport A Quartz - Marron / Noir ",
-  price: 200,
+  price: 15000,
   description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée. style spécial et charmantVerre minéral : Dureté et transparence, pas facile à rayer. CADRAN DE FENÊTRE HARDLEX : Fonction résistante à l'eau et aux chocs.",
   image: "/images/montre12.jpg",
   category: "Luxe"
@@ -94,7 +94,7 @@ export const mockProducts = [
   {
   id: "13",
   name: "Gk Montre Dame Cadran Rond - Argent",
-  price: 4000,
+  price: 5000,
   description: "Cette montre raffinée de la collection GK combine élégance et fonctionnalité. Son boîtier délicat en acier inoxydable argenté, orné d’un cadran nacré aux détails subtils, en fait un accessoire intemporel. Le bracelet en cuir véritable, doux au toucher, ajoute une touche de confort et de sophistication à ce modèle. Ses aiguilles dorées et ses index lumineux offrent une lisibilité parfaite, même en faible lumière. Un choix idéal pour compléter n’importe quelle tenue, cette montre incarne la féminité et l’élégance discrète..",
   image: "/images/gk.jpg",
   category: "Luxe"
@@ -118,7 +118,7 @@ export const mockProducts = [
   {
   id: "16",
   name: "Curren Montre De Luxe Pour Hommes",
-  price: 10000,
+  price: 20000,
   description: "Cadran de conception de haute qualité de luxe de marque supérieure, fonction d'affichage de la date",
   image: "/images/curren16.jpg",
   category: "Luxe"
