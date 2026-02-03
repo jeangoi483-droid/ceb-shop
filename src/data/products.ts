@@ -86,7 +86,7 @@ export const mockProducts = [
   {
   id: "12",
   name: "Montre De Sport A Quartz - Marron / Noir ",
-  price: 3000,
+  price: 200,
   description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée. style spécial et charmantVerre minéral : Dureté et transparence, pas facile à rayer. CADRAN DE FENÊTRE HARDLEX : Fonction résistante à l'eau et aux chocs.",
   image: "/images/montre12.jpg",
   category: "Luxe"
