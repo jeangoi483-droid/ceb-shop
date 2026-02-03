@@ -107,4 +107,12 @@ export const mockProducts = [
   image: "/images/ambertime.JPG",
   category: "Luxe"
 },
+  {
+  id: "15",
+  name: "Montre BINBOND Bleue Homme",
+  price: 10000,
+  description: "Offrez-vous l'élégance audacieuse avec cette montre BINBOND au design unique. Son boîtier et bracelet en acier inoxydable bleu métallisé ajoutent une touche moderne et dynamique, tandis que son cadran avec chiffres romains sculptés donne à cette montre un aspect à la fois sportif et sophistiqué. Son mécanisme robuste et son style distinctif en font l'accessoire idéal pour l'homme moderne qui cherche à allier performance et esthétique. Parfaite pour les occasions décontractées ou pour sublimer une tenue plus habillée, cette montre attire l’attention avec subtilité et caractère.",
+  image: "/images/binbond.JPG",
+  category: "Luxe"
+},
 ];
