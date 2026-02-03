@@ -91,4 +91,27 @@ export const mockProducts = [
   image: "/images/montre12.jpg",
   category: "Luxe"
 },
+  {
+  id: "13",
+  name: "Gk Montre Dame Cadran Rond - Argent",
+  price: 4000,
+  description: "Cette montre raffinée de la collection GK combine élégance et fonctionnalité. Son boîtier délicat en acier inoxydable argenté, orné d’un cadran nacré aux détails subtils, en fait un accessoire intemporel. Le bracelet en cuir véritable, doux au toucher, ajoute une touche de confort et de sophistication à ce modèle. Ses aiguilles dorées et ses index lumineux offrent une lisibilité parfaite, même en faible lumière. Un choix idéal pour compléter n’importe quelle tenue, cette montre incarne la féminité et l’élégance discrète..",
+  image: "/images/gk.jpg",
+  category: "Luxe"
+},
+  {
+  id: "12",
+  name: "Montre De Sport A Quartz - Marron / Noir ",
+  price: 3000,
+  description: "Type de produit : Montre dame
+Type de bracelet : Bracelet en Acier
+Type d‎'‎affichage ‎:‎ Analogique
+Cadran ‎:‎ Acier
+Type de verre ‎:‎ Minéral
+Type de fermoir ‎: Boucle de sécurité‎
+Mouvement ‎:‎ Quartz
+Utilisation : Casual ou quotidienne",
+  image: "/images/gk.jpg",
+  category: "Luxe"
+},
 ];
