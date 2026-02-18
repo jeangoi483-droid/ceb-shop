@@ -118,7 +118,7 @@ export const mockProducts = [
   {
   id: "16",
   name: "Curren Montre De Luxe Pour Hommes",
-  price: 20000,
+  price: 35000,
   description: "Cadran de conception de haute qualité de luxe de marque supérieure, fonction d'affichage de la date",
   image: "/images/curren16.jpg",
   category: "Luxe"
