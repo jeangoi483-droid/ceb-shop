@@ -87,7 +87,7 @@ export const mockProducts = [
   id: "12",
   name: "Montre De Sport A Quartz - Marron / Noir ",
   price: 15000,
-  description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée. 
+  description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée." 
   image: "/images/montre12.jpg",
   category: "Luxe"
 },
