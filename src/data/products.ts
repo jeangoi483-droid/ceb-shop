@@ -5,7 +5,7 @@ export const mockProducts = [
     id: "1",
     name: "Montre S-Series Luxe",
     price: 19000,
-    image: "/images/NIBOSI.JPG",
+    image: "/images/NIBOSI.jpg",
     description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
   },
   {
