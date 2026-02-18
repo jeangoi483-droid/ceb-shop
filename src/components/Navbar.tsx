@@ -26,6 +26,7 @@ export default function Navbar() {
         {/* MENU CENTRAL (Caché sur petit mobile, ou scrollable) */}
         <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
           <Link href="/shop" className="hover:text-indigo-600 transition-colors">Boutique</Link>
+           <Link href="/shop" className="hover:text-indigo-600 transition-colors">Femmes</Link>
           <Link href="/new" className="hover:text-indigo-600 transition-colors text-orange-600">Nouveautés ✨</Link>
           <Link href="/about" className="hover:text-indigo-600 transition-colors">À Propos</Link>
         </div>
