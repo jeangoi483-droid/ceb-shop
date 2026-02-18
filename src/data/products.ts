@@ -78,7 +78,7 @@ export const mockProducts = [
   {
   id: "11",
   name: "Casio Montre Femme classique ",
-  price: 25000,
+  price: 30000,
   description: "LTP-V005L-1BUDF - Bracelet en cuir - Resistant à l'eau.",
   image: "/images/casio.jpg",
   category: "Luxe"
@@ -87,7 +87,7 @@ export const mockProducts = [
   id: "12",
   name: "Montre De Sport A Quartz - Marron / Noir ",
   price: 15000,
-  description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée. style spécial et charmantVerre minéral : Dureté et transparence, pas facile à rayer. CADRAN DE FENÊTRE HARDLEX : Fonction résistante à l'eau et aux chocs.",
+  description: "Le design unique de cette montre convient à la fois pour une apparence formelle et décontractée. 
   image: "/images/montre12.jpg",
   category: "Luxe"
 },
