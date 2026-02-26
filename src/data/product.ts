@@ -10,24 +10,24 @@ export const mockProducts = [
   },
   {
     id: "2",
-    name: "Smartwatch Pro Connect",
-    price: 12000,
-    image: "/images/montre-connecte.jpg",
-    description: "Suivez votre santé et restez connecté avec style. Écran HD et autonomie longue durée."
+    name: "AIDAILU Sandales fines à talon transparent avec bride cheville",
+    price: 6000,
+    image: "/images/chaussure2.jpg",
+    description: "Sublimez votre silhouette avec ces sandales délicates à talon transparent. Leur design minimaliste et brillant épouse parfaitement le pied pour un rendu à la fois sexy et élégant."
   },
   {
     id: "3",
-    name: "Montre Curren Business",
-    price: 25000,
-    image: "/images/montre-curren-1.jpg",
-    description: "Le chronographe classique pour l'homme moderne. Précision et robustesse au rendez-vous."
+    name: "Mateamoda",
+    price: 6000,
+    image: "/images/chaussure3.jpg",
+    description: "L'empeigne est en cuir pu de haute qualité avec une fabrication exquise. Le talon épais de cette chaussure vous permet de marcher confortablement et de manière stable."
   },
   {
     id: "4",
-    name: "Montre Quartz Classic",
-    price: 12000,
-    image: "/images/montre-quartz.jpg",
-    description: "La fiabilité du mouvement Quartz dans un boîtier raffiné et un bracelet confortable."
+    name: "JB Mule Sandales argentées à brides multiples et talon aiguille ",
+    price: 22000,
+    image: "/images/chaussure4.jpg",
+    description: "Affirmez votre style avec ces sandales argentées au design audacieux. Les multiples brides croisées apportent maintien et sophistication, tandis que le talon aiguille affine la silhouette."
   },
   {
   id: "5",
