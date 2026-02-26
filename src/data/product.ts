@@ -3,7 +3,7 @@
 export const mockProducts = [
   {
     id: "1",
-    name: "Nibosi Montre",
+    name: "CEBASTIEN",
     price: 13000,
     image: "/images/NIBOSI.jpg",
     description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
