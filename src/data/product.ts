@@ -3,10 +3,10 @@
 export const mockProducts = [
   {
     id: "1",
-    name: "CEBASTIEN",
+    name: "AIDAILU Sandales transparentes à talon avec bijou strass",
     price: 6000,
     image: "/images/chaussure1.jpg",
-    description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
+    description: "Apportez une touche glamour et raffinée à vos tenues avec ces magnifiques sandales transparentes à talon, Ces sandales allient féminité, élégance et modernité pour un look chic et sophistiqué."
   },
   {
     id: "2",
