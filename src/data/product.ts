@@ -4,8 +4,8 @@ export const mockProducts = [
   {
     id: "1",
     name: "CEBASTIEN",
-    price: 13000,
-    image: "/images/NIBOSI.jpg",
+    price: 6000,
+    image: "/images/chaussure1.jpg",
     description: "Une montre élégante au design minimaliste, parfaite pour toutes les occasions."
   },
   {
