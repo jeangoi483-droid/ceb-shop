@@ -59,6 +59,7 @@ export default function Navbar() {
       {/* MENU MOBILE (Visible seulement sur petit écran pour Boutique/Nouveautés) */}
       <div className="md:hidden flex justify-center gap-6 py-2 bg-gray-50 border-t border-gray-100 text-[10px] font-bold uppercase">
           <Link href="/shop">Boutique</Link>
+        <Link href="/femmes">Femmes</Link>
           <Link href="/new" className="text-orange-600">Nouveautés</Link>
           <Link href="/about">À Propos</Link>
       </div>
