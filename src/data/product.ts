@@ -1,5 +1,4 @@
 // src/data/product.ts
-
 export const mockProduct = [
   {
     id: "101",
@@ -29,5 +28,5 @@ export const mockProduct = [
     image: "/images/chaussure4.jpg",
     description: "Sandales argentées au design audacieux, maintien et sophistication avec talon aiguille."
   },
-  // ... ajoute d'autres articles femme ici
+  // ajoute ici le reste de tes articles femme
 ];
