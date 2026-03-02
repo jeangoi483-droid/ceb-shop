@@ -1,5 +1,4 @@
 // src/data/products.ts
-
 export const mockProducts = [
   {
     id: "1",
@@ -29,12 +28,5 @@ export const mockProducts = [
     image: "/images/montre-quartz.jpg",
     description: "La fiabilité du mouvement Quartz dans un boîtier raffiné et un bracelet confortable."
   },
-  {
-    id: "5",
-    name: "Skmei Montre Digitale Homme Multifonction - Bracelet Acier",
-    price: 10000,
-    image: "/images/montre-skmei.jpg",
-    description: "Montre digitale moderne avec écran clair, bracelet en acier inoxydable, affichage complet (heure, date, jour, chronomètre). Design élégant et robuste."
-  },
-  // ... ajoute les autres montres ici
+  // ajoute ici le reste de tes montres
 ];
