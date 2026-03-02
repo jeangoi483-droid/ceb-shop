@@ -1,6 +1,6 @@
 // src/data/products.ts
 
-export const mockProducts = [
+export const mockProduct = [
   {
     id: "1",
     name: "AIDAILU Sandales transparentes à talon avec bijou strass",
