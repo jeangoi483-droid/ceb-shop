@@ -1,6 +1,4 @@
-// src/lib/store.ts
-
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface CartItem {
   id: string;
@@ -20,20 +18,27 @@ interface CartState {
 
 export const useCart = create<CartState>((set) => ({
   cart: [],
-  addToCart: (item) => set((state) => {
-    const existing = state.cart.find(i => i.id === item.id);
-    if (existing) {
-      return {
-        cart: state.cart.map(i => i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i)
-      };
-    }
-    return { cart: [...state.cart, item] };
-  }),
-  removeFromCart: (id) => set((state) => ({
-    cart: state.cart.filter(i => i.id !== id)
-  })),
-  updateQuantity: (id, quantity) => set((state) => ({
-    cart: state.cart.map(i => i.id === id ? { ...i, quantity } : i)
-  })),
-  clearCart: () => set({ cart: [] }),
+  addToCart: (item) =>
+    set((state) => {
+      const exist = state.cart.find((i) => i.id === item.id);
+      if (exist) {
+        return {
+          cart: state.cart.map((i) =>
+            i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+          )
+        };
+      }
+      return { cart: [...state.cart, item] };
+    }),
+  removeFromCart: (id) =>
+    set((state) => ({ cart: state.cart.filter((i) => i.id !== id) })),
+  updateQuantity: (id, quantity) =>
+    set((state) => ({
+      cart: state.cart.map((i) =>
+        i.id === id
+          ? { ...i, quantity: quantity < 1 ? 1 : quantity }
+          : i
+      )
+    })),
+  clearCart: () => set({ cart: [] })
 }));
