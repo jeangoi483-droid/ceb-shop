@@ -1,53 +1,87 @@
-// src/app/shop/page.tsx ou src/app/femmes/page.tsx
+// src/app/femmes/page.tsx
+"use client";
 
-'use client';
 import React from "react";
-import { mockProduct } from "../../data/product"; // ou mockProduct pour femmes
 import Link from "next/link";
 import Image from "next/image";
+import { mockProduct } from "../../data/product";
+import { useCart } from "../../store/store";
 
-export default function ShopPage() {
+const FemmesPage = () => {
+  const { addToCart } = useCart();
+
+  // Filtrer uniquement les produits femmes
+  const femmesProduct = mockProduct.filter(
+    (p) => !p.category || p.category.toLowerCase() !== "luxe"
+  );
+
   return (
     <div className="max-w-7xl mx-auto p-8 pt-24">
-      {/* ENTÊTE AVEC DESIGN */}
-      <header className="mb-16 text-center relative">
+      <header className="mb-16 text-center">
         <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm">
           Collection Femmes
         </span>
-        <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic drop-shadow-md">
-          Nos Produits
+        <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic">
+          Nos Produits Femmes
         </h1>
         <p className="text-gray-600 text-lg">
-          Découvrez notre sélection exclusive de Chaussures et accessoires pour Femmes.
+          Découvrez nos chaussures et accessoires élégants pour femmes.
         </p>
-
-        {/* Séparateur décoratif */}
-        <div className="mt-4 w-24 h-1 bg-indigo-600 mx-auto rounded-full shadow-lg"></div>
       </header>
 
-      {/* GRILLE PRODUITS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {mockProduct.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
-            <Link href={`/product/${item.id}`}>
-              <div className="relative w-full h-64">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {femmesProduct.map((product) => (
+          <div
+            key={product.id}
+            className="relative border p-4 rounded-lg shadow hover:shadow-lg transition"
+          >
+            <Link href={`/product/${product.id}`}>
+              <a>
                 <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  src={product.image}
+                  alt={product.name}
+                  width={300}
+                  height={300}
+                  className="object-cover mb-4 rounded"
                 />
-              </div>
+              </a>
             </Link>
-            <div className="p-4">
-              <Link href={`/product/${item.id}`} className="font-bold text-lg hover:text-indigo-600">
-                {item.name}
+
+            {/* Logo panier */}
+            <button
+              onClick={() => addToCart(product)}
+              className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h14l-1.5 8H6L7 13zm0 0L5.4 5M7 13l-1.5-8M7 13h14"
+                />
+              </svg>
+            </button>
+
+            <h2 className="text-xl font-semibold mb-2">
+              <Link href={`/product/${product.id}`}>
+                <a className="hover:text-pink-600">{product.name}</a>
               </Link>
-              <p className="text-indigo-600 font-semibold mt-1">{item.price} XOF</p>
-            </div>
+            </h2>
+            <p className="text-gray-700 mb-2">
+              {product.description.substring(0, 60)}...
+            </p>
+            <span className="text-lg font-bold">{product.price} FCFA</span>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
+
+export default FemmesPage;
