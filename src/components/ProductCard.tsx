@@ -1,51 +1,41 @@
-'use client'; // <-- TRÈS IMPORTANT : Doit être la toute première ligne
+'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import { formatPrice } from '../lib/format';
-import { useCart } from '../lib/store'; // <-- On importe notre magasin de données
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { useCart } from "../lib/store";
 
-interface ProductProps {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
+interface ProductCardProps {
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+  };
 }
 
-export default function ProductCard({ id, name, price, image, category }: ProductProps) {
-  // On récupère la fonction "addToCart" depuis notre store Zustand
+export default function ProductCard({product}: ProductCardProps){
   const addToCart = useCart((state) => state.addToCart);
 
   return (
-    <div className="group relative bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:h-80">
-        <img
-          src={image}
-          alt={name}
-          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-        />
+    <div className="border rounded-xl p-4 shadow hover:shadow-lg transition gap-4 flex flex-col">
+      <div className="relative w-full h-64">
+        <Image src={product.image} alt={product.name} fill className="object-cover rounded-lg" />
       </div>
-
-      <div className="p-4">
-        <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">{category}</p>
-        <h3 className="text-sm font-semibold text-gray-700">
-          {/* Note : On retire la span absolute inset-0 si on veut que le bouton soit cliquable séparément */}
-          <Link href={`/product/${id}`}>
-            {name}
-          </Link>
-        </h3>
-        <p className="mt-1 text-lg font-bold text-gray-900">{formatPrice(price)}</p>
-      </div>
-
-      <div className="px-4 pb-4">
+      <h2 className="font-bold text-lg">{product.name}</h2>
+      <p className="text-indigo-600 font-bold">{product.price} XOF</p>
+      <p className="text-gray-500 text-sm line-clamp-3">{product.description}</p>
+      <div className="flex gap-2 mt-auto">
         <button
-          /* AU CLIC : On envoie les infos du produit au panier */
-          onClick={() => addToCart({ id, name, price, image })}
-          className="w-full bg-indigo-600 text-white py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors active:scale-95"
+          onClick={() => addToCart({...product, quantity: 1})}
+          className="bg-indigo-600 text-white px-4 py-2 rounded-xl font-bold"
         >
-          Ajouter au panier
+          🛒 Ajouter au panier
         </button>
+        <Link href={`/product/${product.id}`} className="px-4 py-2 border rounded-xl">
+          Détails
+        </Link>
       </div>
     </div>
   );
