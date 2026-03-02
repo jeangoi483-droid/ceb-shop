@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockProducts } from '../../data/products';
+import { watches } from '../../data/products';
 import { useCart } from '../../lib/store';
 
 export default function ShopPage() {
