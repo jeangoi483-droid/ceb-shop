@@ -6,42 +6,89 @@ import Image from "next/image";
 import { useCart } from "../../lib/store";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const subtotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
   if (cart.length === 0) {
     return (
       <div className="text-center p-40">
         🛒 Votre panier est vide
-        <br/>
-        <Link href="/shop" className="text-indigo-600 font-bold">Retour à la boutique</Link>
+        <br />
+        <Link href="/shop" className="text-indigo-600 font-bold">
+          Retour à la boutique
+        </Link>
       </div>
     );
   }
 
+  // Préparer le message WhatsApp
+  const waMessage = encodeURIComponent(
+    cart
+      .map((i) => `${i.name} x ${i.quantity} = ${i.price * i.quantity} XOF`)
+      .join("\n") + `\nTotal: ${subtotal} XOF`
+  );
+
+  const waLink = `https://wa.me/225XXXXXXXXX?text=${waMessage}`; // Remplace le numéro
+
   return (
     <div className="max-w-4xl mx-auto p-8 pt-24 space-y-6">
-      {cart.map(item => (
+      {cart.map((item) => (
         <div key={item.id} className="flex items-center gap-4 border-b pb-4">
           <div className="relative w-24 h-24">
             <Image src={item.image} alt={item.name} fill className="object-cover rounded-lg" />
           </div>
-          <div>
-            <h2 className="font-bold">{item.name}</h2>
+          <div className="flex-1">
+            <Link href={`/product/${item.id}`} className="font-bold hover:text-indigo-600">
+              {item.name}
+            </Link>
             <p>{item.price} XOF</p>
             <div className="flex gap-2 items-center mt-2">
-              <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
+              <button
+                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                className="border px-2 rounded"
+              >
+                -
+              </button>
               <span>{item.quantity}</span>
-              <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+              <button
+                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                className="border px-2 rounded"
+              >
+                +
+              </button>
             </div>
-            <button onClick={() => removeFromCart(item.id)} className="text-red-500 mt-2">
+            <button
+              onClick={() => removeFromCart(item.id)}
+              className="text-red-500 mt-2"
+            >
               Supprimer
             </button>
           </div>
         </div>
       ))}
+
       <div className="text-right font-bold text-xl">
         Total: {subtotal} XOF
+      </div>
+
+      {/* Boutons Commander */}
+      <div className="flex justify-end gap-4 mt-4">
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 text-white px-6 py-3 rounded-xl font-bold"
+        >
+          Commander via WhatsApp
+        </a>
+
+        {/* Ici tu peux intégrer Paystack ou autre solution de paiement */}
+        <button
+          onClick={() => alert("Paiement Paystack à intégrer")}
+          className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold"
+        >
+          Payer maintenant
+        </button>
       </div>
     </div>
   );
