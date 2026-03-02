@@ -4,14 +4,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { mockProduct } from "../../data/products";
+import { mockProducts } from "../../data/products";
 import { useCart } from "../../lib/store";
 
 const ProductsPage = () => {
   const { addToCart } = useCart();
 
   // Filtrer uniquement les montres (category = "Luxe")
-  const watches = mockProduct.filter(
+  const watches = mockProducts.filter(
     (p) => p.category && p.category.toLowerCase() === "luxe"
   );
 
@@ -30,7 +30,7 @@ const ProductsPage = () => {
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {watches.map((product) => (
+        {watches.map((products) => (
           <div
             key={product.id}
             className="relative border p-4 rounded-lg shadow hover:shadow-lg transition"
@@ -49,7 +49,7 @@ const ProductsPage = () => {
 
             {/* Logo panier */}
             <button
-              onClick={() => addToCart(product)}
+              onClick={() => addToCart(products)}
               className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
             >
               <svg
