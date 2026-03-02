@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { mockProduct } from "../../data/products";
-import { useCart } from "../../store/store";
+import { useCart } from "../../lib/store";
 
 const ProductsPage = () => {
   const { addToCart } = useCart();
