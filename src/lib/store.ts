@@ -1,39 +1,26 @@
-'use client';
-import { create } from 'zustand';
+import { create } from "zustand";
 
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  quantity?: number;
-}
+export const useStore = create((set) => ({
+  cart: [],
 
-interface CartState {
-  items: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (id: string) => void;
-  clearCart: () => void;
-}
+  addToCart: (product: any) =>
+    set((state: any) => {
+      const existing = state.cart.find(
+        (item: any) => item.id === product.id
+      );
 
-export const useCart = create<CartState>((set) => ({
-  items: [],
-  addToCart: (product: Product) =>
-    set((state) => {
-      const exists = state.items.find((p) => p.id === product.id);
-      if (exists) {
+      if (existing) {
         return {
-          items: state.items.map((p) =>
-            p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+          cart: state.cart.map((item: any) =>
+            item.id === product.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
           ),
         };
-      } else {
-        return { items: [...state.items, { ...product, quantity: 1 }] };
       }
+
+      return {
+        cart: [...state.cart, { ...product, quantity: 1 }],
+      };
     }),
-  removeFromCart: (id: string) =>
-    set((state) => ({
-      items: state.items.filter((p) => p.id !== id),
-    })),
-  clearCart: () => set({ items: [] }),
 }));
