@@ -1,87 +1,76 @@
-// src/app/products/page.tsx
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { mockProducts } from "../../data/products";
-import { useCart } from "../../lib/store";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { mockProducts } from '../../data/products';
+import { useCart } from '../../lib/store';
 
-const ProductsPage = () => {
-  const { addToCart } = useCart();
+export default function MontresPage() {
+    const addToCart = useCart((state) => state.addToCart);
 
-  // Filtrer uniquement les montres (category = "Luxe")
-  const watches = mockProducts.filter(
-    (p) => p.category && p.category.toLowerCase() === "luxe"
-  );
+    // On filtre uniquement les montres
+    const montres = mockProducts.filter((p) => p.category === 'montre');
 
-  return (
-    <div className="max-w-7xl mx-auto p-8 pt-24">
-      <header className="mb-16 text-center">
-        <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm">
-          Collection Montres
-        </span>
-        <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic">
-          Nos Montres Luxe
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Découvrez notre sélection de montres haut de gamme pour hommes et femmes.
-        </p>
-      </header>
+    const handleAddToCart = (product: any) => {
+        addToCart({
+            id: String(product.id),
+            name: product.name,
+            price: Number(product.price),
+            image: product.image,
+        });
+        alert(`✨ ${product.name} ajouté au panier !`);
+    };
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {watches.map((products) => (
-          <div
-            key={product.id}
-            className="relative border p-4 rounded-lg shadow hover:shadow-lg transition"
-          >
-            <Link href={`/product/${product.id}`}>
-              <a>
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={300}
-                  height={300}
-                  className="object-cover mb-4 rounded"
-                />
-              </a>
-            </Link>
+    return (
+        <div className="max-w-7xl mx-auto p-8 pt-24">
+            {/* ENTÊTE PAGE MONTRES */}
+            <header className="mb-16 text-center">
+                <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm">Collection Montres</span>
+                <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic">
+                    Nos <span className="text-indigo-400">Montres</span>
+                </h1>
+                <p className="text-gray-600 max-w-xl mx-auto">
+                    Découvrez notre sélection de montres de luxe, design et précision à chaque instant.
+                </p>
+            </header>
 
-            {/* Logo panier */}
-            <button
-              onClick={() => addToCart(products)}
-              className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 3h2l.4 2M7 13h14l-1.5 8H6L7 13zm0 0L5.4 5M7 13l-1.5-8M7 13h14"
-                />
-              </svg>
-            </button>
-
-            <h2 className="text-xl font-semibold mb-2">
-              <Link href={`/product/${product.id}`}>
-                <a className="hover:text-pink-600">{product.name}</a>
-              </Link>
-            </h2>
-            <p className="text-gray-700 mb-2">
-              {product.description.substring(0, 60)}...
-            </p>
-            <span className="text-lg font-bold">{product.price} FCFA</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default ProductsPage;
+            {/* GRILLE PRODUITS */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                {montres.map((product) => (
+                    <div key={product.id} className="group relative bg-white rounded-3xl p-4 border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                        <div className="relative h-80 w-full mb-6 overflow-hidden rounded-2xl bg-gray-50">
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                            />
+                            {/* Logo panier */}
+                            <button
+                                onClick={() => handleAddToCart(product)}
+                                className="absolute top-4 right-4 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-black transition-all active:scale-90"
+                                title="Ajouter au panier"
+                            >
+                                🛒
+                            </button>
+                        </div>
+                        <div className="px-2 pb-2">
+                            <Link
+                                href={`/product/${product.id}`}
+                                className="font-bold text-xl text-gray-900 hover:text-indigo-600 transition-colors"
+                            >
+                                {product.name}
+                            </Link>
+                            <div className="flex items-center justify-between mt-2">
+                                <span className="text-indigo-600 font-black text-xl">
+                                    {product.price.toLocaleString()} <span className="text-sm">XOF</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
