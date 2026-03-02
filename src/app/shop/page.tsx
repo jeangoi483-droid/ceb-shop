@@ -12,13 +12,13 @@ export default function ShopPage() {
       {/* ENTÊTE AVEC DESIGN */}
       <header className="mb-16 text-center relative">
         <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm">
-          Collection Luxe
+          Collection Hommes
         </span>
         <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic drop-shadow-md">
           Nos Produits
         </h1>
         <p className="text-gray-600 text-lg">
-          Découvrez notre sélection exclusive de montres et accessoires.
+          Découvrez notre sélection exclusive de montres et accessoires pour Hommes.
         </p>
 
         {/* Séparateur décoratif */}
