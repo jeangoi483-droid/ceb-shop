@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
 
 export interface CartItem {
   id: string;
@@ -9,45 +8,50 @@ export interface CartItem {
   quantity: number;
 }
 
-interface CartStore {
+interface CartState {
   cart: CartItem[];
-  addToCart: (item: Omit<CartItem, 'quantity'>) => void;
+  addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
 }
 
-export const useCart = create<CartStore>()(
-  persist(
-    (set) => ({
-      cart: [],
-      addToCart: (item) =>
-        set((state) => {
-          const existingItem = state.cart.find((i) => i.id === item.id);
-          if (existingItem) {
-            return {
-              cart: state.cart.map((i) =>
-                i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-              ),
-            };
-          }
-          return { cart: [...state.cart, { ...item, quantity: 1 }] };
-        }),
-      removeFromCart: (id) =>
-        set((state) => ({
-          cart: state.cart.filter((i) => i.id !== id),
-        })),
-      updateQuantity: (id, quantity) =>
-        set((state) => ({
+export const useCart = create<CartState>((set, get) => ({
+  cart: [],
+
+  addToCart: (item: CartItem) => {
+    set((state) => {
+      const existingItem = state.cart.find((i) => i.id === item.id);
+      if (existingItem) {
+        // Si l'item existe déjà, on incrémente la quantité
+        return {
           cart: state.cart.map((i) =>
-            i.id === id ? { ...i, quantity: Math.max(1, quantity) } : i
+            i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
           ),
-        })),
-      clearCart: () => set({ cart: [] }),
-    }),
-    {
-      name: 'ceb-shop-cart-storage', // Nom unique de la mémoire
-      storage: createJSONStorage(() => localStorage), // Utilisation forcée du localStorage
-    }
-  )
-);
+        };
+      } else {
+        // Sinon, on l'ajoute
+        return { cart: [...state.cart, { ...item }] };
+      }
+    });
+  },
+
+  removeFromCart: (id: string) => {
+    set((state) => ({
+      cart: state.cart.filter((item) => item.id !== id),
+    }));
+  },
+
+  updateQuantity: (id: string, quantity: number) => {
+    if (quantity < 1) quantity = 1;
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === id ? { ...item, quantity } : item
+      ),
+    }));
+  },
+
+  clearCart: () => {
+    set({ cart: [] });
+  },
+}));
