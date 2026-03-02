@@ -1,6 +1,8 @@
+// src/lib/store.ts
+
 import { create } from 'zustand';
 
-export interface CartItem {
+interface CartItem {
   id: string;
   name: string;
   price: number;
@@ -16,42 +18,22 @@ interface CartState {
   clearCart: () => void;
 }
 
-export const useCart = create<CartState>((set, get) => ({
+export const useCart = create<CartState>((set) => ({
   cart: [],
-
-  addToCart: (item: CartItem) => {
-    set((state) => {
-      const existingItem = state.cart.find((i) => i.id === item.id);
-      if (existingItem) {
-        // Si l'item existe déjà, on incrémente la quantité
-        return {
-          cart: state.cart.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
-          ),
-        };
-      } else {
-        // Sinon, on l'ajoute
-        return { cart: [...state.cart, { ...item }] };
-      }
-    });
-  },
-
-  removeFromCart: (id: string) => {
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== id),
-    }));
-  },
-
-  updateQuantity: (id: string, quantity: number) => {
-    if (quantity < 1) quantity = 1;
-    set((state) => ({
-      cart: state.cart.map((item) =>
-        item.id === id ? { ...item, quantity } : item
-      ),
-    }));
-  },
-
-  clearCart: () => {
-    set({ cart: [] });
-  },
+  addToCart: (item) => set((state) => {
+    const existing = state.cart.find(i => i.id === item.id);
+    if (existing) {
+      return {
+        cart: state.cart.map(i => i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i)
+      };
+    }
+    return { cart: [...state.cart, item] };
+  }),
+  removeFromCart: (id) => set((state) => ({
+    cart: state.cart.filter(i => i.id !== id)
+  })),
+  updateQuantity: (id, quantity) => set((state) => ({
+    cart: state.cart.map(i => i.id === id ? { ...i, quantity } : i)
+  })),
+  clearCart: () => set({ cart: [] }),
 }));
