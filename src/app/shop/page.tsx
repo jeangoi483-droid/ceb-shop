@@ -1,55 +1,87 @@
-'use client';
+// src/app/products/page.tsx
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { mockProducts } from '../../data/products';
-import { useCart } from '../../lib/store';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { mockProducts } from "../../data/products";
+import { useCart } from "../../store/store";
 
-export default function WatchesPage() {
-    const addToCart = useCart((state) => state.addToCart);
+const ProductsPage = () => {
+  const { addToCart } = useCart();
 
-    // On filtre juste les montres
-    const watches = mockProducts.filter((p) => p.category === 'Montre');
+  // Filtrer uniquement les montres (category = "Luxe")
+  const watches = mockProducts.filter(
+    (p) => p.category && p.category.toLowerCase() === "luxe"
+  );
 
-    const handleAddToCart = (product: any) => {
-        addToCart({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-        });
-        alert(`${product.name} ajouté au panier`);
-    };
+  return (
+    <div className="max-w-7xl mx-auto p-8 pt-24">
+      <header className="mb-16 text-center">
+        <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm">
+          Collection Montres
+        </span>
+        <h1 className="text-5xl font-black mb-4 text-gray-900 uppercase italic">
+          Nos Montres Luxe
+        </h1>
+        <p className="text-gray-600 text-lg">
+          Découvrez notre sélection de montres haut de gamme pour hommes et femmes.
+        </p>
+      </header>
 
-    return (
-        <div className="max-w-7xl mx-auto p-8 pt-24">
-            <h1 className="text-4xl font-bold text-center mb-12">Nos Montres</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {watches.map((products) => (
+          <div
+            key={product.id}
+            className="relative border p-4 rounded-lg shadow hover:shadow-lg transition"
+          >
+            <Link href={`/product/${product.id}`}>
+              <a>
+                <Image
+                  src={products.image}
+                  alt={products.name}
+                  width={300}
+                  height={300}
+                  className="object-cover mb-4 rounded"
+                />
+              </a>
+            </Link>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {watches.map((product) => (
-                    <div key={product.id} className="bg-white rounded-xl shadow p-4 group">
-                        <Link href={`/product/${product.id}`}>
-                            <div className="relative w-full h-72 mb-4 overflow-hidden rounded-lg group-hover:scale-105 transition-transform">
-                                <Image
-                                    src={product.image}
-                                    alt={product.name}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        </Link>
-                        <h2 className="font-semibold text-lg mb-2">{product.name}</h2>
-                        <p className="font-bold text-indigo-600 mb-4">{product.price.toLocaleString()} XOF</p>
-                        <button
-                            onClick={() => handleAddToCart(product)}
-                            className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
-                        >
-                            Ajouter au panier
-                        </button>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
+            {/* Logo panier */}
+            <button
+              onClick={() => addToCart(products)}
+              className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h14l-1.5 8H6L7 13zm0 0L5.4 5M7 13l-1.5-8M7 13h14"
+                />
+              </svg>
+            </button>
+
+            <h2 className="text-xl font-semibold mb-2">
+              <Link href={`/product/${product.id}`}>
+                <a className="hover:text-pink-600">{products.name}</a>
+              </Link>
+            </h2>
+            <p className="text-gray-700 mb-2">
+              {product.description.substring(0, 60)}...
+            </p>
+            <span className="text-lg font-bold">{products.price} FCFA</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductsPage;
