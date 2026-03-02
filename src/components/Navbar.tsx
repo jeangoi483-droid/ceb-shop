@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useStore } from "@/lib/store";
+import { useStore } from "../lib/store";
 
 export default function Navbar() {
   const cart = useStore((state) => state.cart) || [];
