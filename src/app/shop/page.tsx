@@ -4,14 +4,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { mockProducts } from "../../data/products";
+import { mockProduct } from "../../data/products";
 import { useCart } from "../../store/store";
 
 const ProductsPage = () => {
   const { addToCart } = useCart();
 
   // Filtrer uniquement les montres (category = "Luxe")
-  const watches = mockProducts.filter(
+  const watches = mockProduct.filter(
     (p) => p.category && p.category.toLowerCase() === "luxe"
   );
 
@@ -30,7 +30,7 @@ const ProductsPage = () => {
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {watches.map((products) => (
+        {watches.map((product) => (
           <div
             key={product.id}
             className="relative border p-4 rounded-lg shadow hover:shadow-lg transition"
@@ -38,8 +38,8 @@ const ProductsPage = () => {
             <Link href={`/product/${product.id}`}>
               <a>
                 <Image
-                  src={products.image}
-                  alt={products.name}
+                  src={product.image}
+                  alt={product.name}
                   width={300}
                   height={300}
                   className="object-cover mb-4 rounded"
@@ -49,7 +49,7 @@ const ProductsPage = () => {
 
             {/* Logo panier */}
             <button
-              onClick={() => addToCart(products)}
+              onClick={() => addToCart(product)}
               className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-pink-600 hover:text-white transition"
             >
               <svg
@@ -70,13 +70,13 @@ const ProductsPage = () => {
 
             <h2 className="text-xl font-semibold mb-2">
               <Link href={`/product/${product.id}`}>
-                <a className="hover:text-pink-600">{products.name}</a>
+                <a className="hover:text-pink-600">{product.name}</a>
               </Link>
             </h2>
             <p className="text-gray-700 mb-2">
               {product.description.substring(0, 60)}...
             </p>
-            <span className="text-lg font-bold">{products.price} FCFA</span>
+            <span className="text-lg font-bold">{product.price} FCFA</span>
           </div>
         ))}
       </div>
